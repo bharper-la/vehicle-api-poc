@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vehicle-api
+spec:
+  selector:
+    matchLabels:
+      app: vehicle-api
+  template:
+    metadata:
+      labels:
+        app: vehicle-api
+    spec:
+      containers:
+        - name: vehicle-api
+          image: my-docker-username/vehicle-api:latest
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://mysql:3306/vehicles
+            - name: SPRING_DATASOURCE_USERNAME
+              value: root
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: password
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vehicle-api
+spec:
+  selector:
+    app: vehicle-api
+  ports:
+    - port: 8080
+      targetPort: 8080
+  type: LoadBalancer

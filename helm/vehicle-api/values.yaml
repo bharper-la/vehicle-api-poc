@@ -1,0 +1,16 @@
+replicaCount: 1
+
+image:
+  repository: my-docker-username/vehicle-api
+  tag: latest
+  pullPolicy: IfNotPresent
+
+mysql:
+  image: mysql
+  tag: "8.0"
+  rootPassword: password
+  database: vehicles
+
+service:
+  type: LoadBalancer
+  port: 8080

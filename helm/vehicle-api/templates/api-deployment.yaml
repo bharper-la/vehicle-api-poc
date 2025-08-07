@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-vehicle-api
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-vehicle-api
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-vehicle-api
+    spec:
+      containers:
+        - name: vehicle-api
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://{{ .Release.Name }}-mysql:3306/{{ .Values.mysql.database }}
+            - name: SPRING_DATASOURCE_USERNAME
+              value: root
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: {{ .Values.mysql.rootPassword }}
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-vehicle-api
+spec:
+  selector:
+    app: {{ .Release.Name }}-vehicle-api
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 8080
+  type: {{ .Values.service.type }}
