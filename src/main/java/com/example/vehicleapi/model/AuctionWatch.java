@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class AuctionWatch {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String watchData;
     private LocalDateTime createdAt;
     @ManyToOne

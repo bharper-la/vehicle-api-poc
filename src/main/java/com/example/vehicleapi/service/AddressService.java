@@ -17,7 +17,7 @@ public class AddressService {
         return repository.findAll().stream().map(mapper::toDto).toList();
     }
 
-    public AddressDto getById(Long id) {
+    public AddressDto getById(Integer id) {
         return mapper.toDto(repository.findById(id).orElseThrow());
     }
 
@@ -25,13 +25,13 @@ public class AddressService {
         return mapper.toDto(repository.save(mapper.toEntity(dto)));
     }
 
-    public AddressDto update(Long id, AddressDto dto) {
+    public AddressDto update(Integer id, AddressDto dto) {
         var entity = mapper.toEntity(dto);
         entity.setId(id);
         return mapper.toDto(repository.save(entity));
     }
 
-    public void delete(Long id) {
+    public void delete(Integer id) {
         repository.deleteById(id);
     }
 }

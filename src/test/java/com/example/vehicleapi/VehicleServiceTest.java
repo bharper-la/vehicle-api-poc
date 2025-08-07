@@ -38,8 +38,8 @@ public class VehicleServiceTest {
     void testGetById() {
         Vehicle entity = new Vehicle();
         VehicleDto dto = new VehicleDto();
-        when(repository.findById(1L)).thenReturn(Optional.of(entity));
+        when(repository.findById(1)).thenReturn(Optional.of(entity));
         when(mapper.toDto(entity)).thenReturn(dto);
-        assertEquals(dto, service.getById(1L));
+        assertEquals(dto, service.getById(1));
     }
 }

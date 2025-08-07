@@ -17,7 +17,7 @@ public class AuctionWatchService {
         return repository.findAll().stream().map(mapper::toDto).toList();
     }
 
-    public AuctionWatchDto getById(Long id) {
+    public AuctionWatchDto getById(Integer id) {
         return mapper.toDto(repository.findById(id).orElseThrow());
     }
 
@@ -25,13 +25,13 @@ public class AuctionWatchService {
         return mapper.toDto(repository.save(mapper.toEntity(dto)));
     }
 
-    public AuctionWatchDto update(Long id, AuctionWatchDto dto) {
+    public AuctionWatchDto update(Integer id, AuctionWatchDto dto) {
         var entity = mapper.toEntity(dto);
         entity.setId(id);
         return mapper.toDto(repository.save(entity));
     }
 
-    public void delete(Long id) {
+    public void delete(Integer id) {
         repository.deleteById(id);
     }
 }

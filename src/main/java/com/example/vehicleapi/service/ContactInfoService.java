@@ -17,7 +17,7 @@ public class ContactInfoService {
         return repository.findAll().stream().map(mapper::toDto).toList();
     }
 
-    public ContactInfoDto getById(Long id) {
+    public ContactInfoDto getById(Integer id) {
         return mapper.toDto(repository.findById(id).orElseThrow());
     }
 
@@ -25,13 +25,13 @@ public class ContactInfoService {
         return mapper.toDto(repository.save(mapper.toEntity(dto)));
     }
 
-    public ContactInfoDto update(Long id, ContactInfoDto dto) {
+    public ContactInfoDto update(Integer id, ContactInfoDto dto) {
         var entity = mapper.toEntity(dto);
         entity.setId(id);
         return mapper.toDto(repository.save(entity));
     }
 
-    public void delete(Long id) {
+    public void delete(Integer id) {
         repository.deleteById(id);
     }
 }

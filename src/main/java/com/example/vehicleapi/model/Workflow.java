@@ -14,7 +14,7 @@ import java.util.*;
 public class Workflow {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String name;
     private LocalDateTime createdAt;
     @ManyToOne

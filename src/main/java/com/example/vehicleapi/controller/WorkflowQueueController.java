@@ -27,7 +27,7 @@ public class WorkflowQueueController {
 
     @GetMapping("/<built-in function id>")
     @Operation(summary = "Get by ID")
-    public WorkflowQueueDto getById(@PathVariable Long id) {
+    public WorkflowQueueDto getById(@PathVariable Integer id) {
         return mapper.toDto(repository.findById(id).orElseThrow());
     }
 
@@ -40,7 +40,7 @@ public class WorkflowQueueController {
 
     @PutMapping("/<built-in function id>")
     @Operation(summary = "Update record")
-    public WorkflowQueueDto update(@PathVariable Long id, @RequestBody WorkflowQueueDto dto) {
+    public WorkflowQueueDto update(@PathVariable Integer id, @RequestBody WorkflowQueueDto dto) {
         WorkflowQueue entity = mapper.toEntity(dto);
         entity.setId(id);
         return mapper.toDto(repository.save(entity));
@@ -48,7 +48,7 @@ public class WorkflowQueueController {
 
     @DeleteMapping("/<built-in function id>")
     @Operation(summary = "Delete record")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Integer id) {
         repository.deleteById(id);
     }
 }

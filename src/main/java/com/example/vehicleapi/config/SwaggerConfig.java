@@ -20,8 +20,8 @@ public class SwaggerConfig {
                         .description("API for Vehicle Management System")
                         .contact(new Contact()
                                 .name("Brad Harper")
-                                .email("bradharperphotography@gmail.com")
-                                .url("https://www.bradharperphotography.com"))
+                                .email("bradharper@laserappraiser.com")
+                                .url("https://www.laserappraiser.com"))
                         .license(new License().name("Apache 2.0").url("http://springdoc.org")));
     }
 

@@ -27,7 +27,7 @@ public class VehicleController {
 
     @GetMapping("/<built-in function id>")
     @Operation(summary = "Get by ID")
-    public VehicleDto getById(@PathVariable Long id) {
+    public VehicleDto getById(@PathVariable Integer id) {
         return mapper.toDto(repository.findById(id).orElseThrow());
     }
 
@@ -40,7 +40,7 @@ public class VehicleController {
 
     @PutMapping("/<built-in function id>")
     @Operation(summary = "Update record")
-    public VehicleDto update(@PathVariable Long id, @RequestBody VehicleDto dto) {
+    public VehicleDto update(@PathVariable Integer id, @RequestBody VehicleDto dto) {
         Vehicle entity = mapper.toEntity(dto);
         entity.setId(id);
         return mapper.toDto(repository.save(entity));
@@ -48,7 +48,7 @@ public class VehicleController {
 
     @DeleteMapping("/<built-in function id>")
     @Operation(summary = "Delete record")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Integer id) {
         repository.deleteById(id);
     }
 }

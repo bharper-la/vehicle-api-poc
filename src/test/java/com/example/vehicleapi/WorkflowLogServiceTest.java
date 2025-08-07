@@ -38,8 +38,8 @@ public class WorkflowLogServiceTest {
     void testGetById() {
         WorkflowLog entity = new WorkflowLog();
         WorkflowLogDto dto = new WorkflowLogDto();
-        when(repository.findById(1L)).thenReturn(Optional.of(entity));
+        when(repository.findById(1)).thenReturn(Optional.of(entity));
         when(mapper.toDto(entity)).thenReturn(dto);
-        assertEquals(dto, service.getById(1L));
+        assertEquals(dto, service.getById(1));
     }
 }

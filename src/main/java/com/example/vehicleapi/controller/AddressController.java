@@ -27,7 +27,7 @@ public class AddressController {
 
     @GetMapping("/<built-in function id>")
     @Operation(summary = "Get by ID")
-    public AddressDto getById(@PathVariable Long id) {
+    public AddressDto getById(@PathVariable Integer id) {
         return mapper.toDto(repository.findById(id).orElseThrow());
     }
 
@@ -40,7 +40,7 @@ public class AddressController {
 
     @PutMapping("/<built-in function id>")
     @Operation(summary = "Update record")
-    public AddressDto update(@PathVariable Long id, @RequestBody AddressDto dto) {
+    public AddressDto update(@PathVariable Integer id, @RequestBody AddressDto dto) {
         Address entity = mapper.toEntity(dto);
         entity.setId(id);
         return mapper.toDto(repository.save(entity));
@@ -48,7 +48,7 @@ public class AddressController {
 
     @DeleteMapping("/<built-in function id>")
     @Operation(summary = "Delete record")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Integer id) {
         repository.deleteById(id);
     }
 }

@@ -17,7 +17,7 @@ public class UserService {
         return repository.findAll().stream().map(mapper::toDto).toList();
     }
 
-    public UserDto getById(Long id) {
+    public UserDto getById(Integer id) {
         return mapper.toDto(repository.findById(id).orElseThrow());
     }
 
@@ -25,13 +25,13 @@ public class UserService {
         return mapper.toDto(repository.save(mapper.toEntity(dto)));
     }
 
-    public UserDto update(Long id, UserDto dto) {
+    public UserDto update(Integer id, UserDto dto) {
         var entity = mapper.toEntity(dto);
         entity.setId(id);
         return mapper.toDto(repository.save(entity));
     }
 
-    public void delete(Long id) {
+    public void delete(Integer id) {
         repository.deleteById(id);
     }
 }

@@ -27,7 +27,7 @@ public class LeadController {
 
     @GetMapping("/<built-in function id>")
     @Operation(summary = "Get by ID")
-    public LeadDto getById(@PathVariable Long id) {
+    public LeadDto getById(@PathVariable Integer id) {
         return mapper.toDto(repository.findById(id).orElseThrow());
     }
 
@@ -40,7 +40,7 @@ public class LeadController {
 
     @PutMapping("/<built-in function id>")
     @Operation(summary = "Update record")
-    public LeadDto update(@PathVariable Long id, @RequestBody LeadDto dto) {
+    public LeadDto update(@PathVariable Integer id, @RequestBody LeadDto dto) {
         Lead entity = mapper.toEntity(dto);
         entity.setId(id);
         return mapper.toDto(repository.save(entity));
@@ -48,7 +48,7 @@ public class LeadController {
 
     @DeleteMapping("/<built-in function id>")
     @Operation(summary = "Delete record")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Integer id) {
         repository.deleteById(id);
     }
 }

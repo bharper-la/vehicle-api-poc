@@ -27,7 +27,7 @@ public class UserController {
 
     @GetMapping("/<built-in function id>")
     @Operation(summary = "Get by ID")
-    public UserDto getById(@PathVariable Long id) {
+    public UserDto getById(@PathVariable Integer id) {
         return mapper.toDto(repository.findById(id).orElseThrow());
     }
 
@@ -40,7 +40,7 @@ public class UserController {
 
     @PutMapping("/<built-in function id>")
     @Operation(summary = "Update record")
-    public UserDto update(@PathVariable Long id, @RequestBody UserDto dto) {
+    public UserDto update(@PathVariable Integer id, @RequestBody UserDto dto) {
         User entity = mapper.toEntity(dto);
         entity.setId(id);
         return mapper.toDto(repository.save(entity));
@@ -48,7 +48,7 @@ public class UserController {
 
     @DeleteMapping("/<built-in function id>")
     @Operation(summary = "Delete record")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Integer id) {
         repository.deleteById(id);
     }
 }

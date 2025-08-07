@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class Lead {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String dealership;
     private String firstName;
     private String lastName;

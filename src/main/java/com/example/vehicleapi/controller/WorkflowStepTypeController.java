@@ -27,7 +27,7 @@ public class WorkflowStepTypeController {
     }
 
     @GetMapping("/{id}")
-    public WorkflowStepTypeDto findById(@PathVariable Long id) {
+    public WorkflowStepTypeDto findById(@PathVariable Integer id) {
         return service.findById(id);
     }
 
@@ -37,13 +37,13 @@ public class WorkflowStepTypeController {
     }
 
     @PutMapping("/{id}")
-    public WorkflowStepTypeDto update(@PathVariable Long id,
+    public WorkflowStepTypeDto update(@PathVariable Integer id,
                                       @Valid @RequestBody WorkflowStepTypeDto dto) {
         return service.update(id, dto);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Integer id) {
         service.delete(id);
     }
 }

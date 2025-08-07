@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class WorkflowStep {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String description;
     private LocalDateTime createdAt;
     @ManyToOne

@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class WorkflowQueue {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String status;
     private LocalDateTime createdAt;
     @ManyToOne

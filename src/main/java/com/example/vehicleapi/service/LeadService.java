@@ -17,7 +17,7 @@ public class LeadService {
         return repository.findAll().stream().map(mapper::toDto).toList();
     }
 
-    public LeadDto getById(Long id) {
+    public LeadDto getById(Integer id) {
         return mapper.toDto(repository.findById(id).orElseThrow());
     }
 
@@ -25,13 +25,13 @@ public class LeadService {
         return mapper.toDto(repository.save(mapper.toEntity(dto)));
     }
 
-    public LeadDto update(Long id, LeadDto dto) {
+    public LeadDto update(Integer id, LeadDto dto) {
         var entity = mapper.toEntity(dto);
         entity.setId(id);
         return mapper.toDto(repository.save(entity));
     }
 
-    public void delete(Long id) {
+    public void delete(Integer id) {
         repository.deleteById(id);
     }
 }

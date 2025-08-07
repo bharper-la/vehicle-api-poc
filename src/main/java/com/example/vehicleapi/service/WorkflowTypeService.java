@@ -17,7 +17,7 @@ public class WorkflowTypeService {
         return repository.findAll().stream().map(mapper::toDto).toList();
     }
 
-    public WorkflowTypeDto getById(Long id) {
+    public WorkflowTypeDto getById(Integer id) {
         return mapper.toDto(repository.findById(id).orElseThrow());
     }
 
@@ -25,13 +25,13 @@ public class WorkflowTypeService {
         return mapper.toDto(repository.save(mapper.toEntity(dto)));
     }
 
-    public WorkflowTypeDto update(Long id, WorkflowTypeDto dto) {
+    public WorkflowTypeDto update(Integer id, WorkflowTypeDto dto) {
         var entity = mapper.toEntity(dto);
         entity.setId(id);
         return mapper.toDto(repository.save(entity));
     }
 
-    public void delete(Long id) {
+    public void delete(Integer id) {
         repository.deleteById(id);
     }
 }

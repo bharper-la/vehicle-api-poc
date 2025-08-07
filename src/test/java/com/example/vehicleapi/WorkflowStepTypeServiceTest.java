@@ -38,8 +38,8 @@ public class WorkflowStepTypeServiceTest {
     void testGetById() {
         WorkflowStepType entity = new WorkflowStepType();
         WorkflowStepTypeDto dto = new WorkflowStepTypeDto();
-        when(repository.findById(1L)).thenReturn(Optional.of(entity));
+        when(repository.findById(1)).thenReturn(Optional.of(entity));
         when(mapper.toDto(entity)).thenReturn(dto);
-        assertEquals(dto, service.findById(1L));
+        assertEquals(dto, service.findById(1));
     }
 }

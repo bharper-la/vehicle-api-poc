@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class VehicleCondition {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private LocalDate conditionDate;
     private String comments;
     @ManyToOne

@@ -14,7 +14,7 @@ import java.util.*;
 public class ContactInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String email;
     private String phoneAreaCode;
     private String phoneExchangeNumber;

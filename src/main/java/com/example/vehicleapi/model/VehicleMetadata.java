@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class VehicleMetadata {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String type;
     private String data;
     private LocalDateTime createdAt;

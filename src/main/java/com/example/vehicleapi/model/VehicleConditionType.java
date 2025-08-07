@@ -14,7 +14,7 @@ import java.util.*;
 public class VehicleConditionType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String code;
     private String description;
     @OneToMany(mappedBy = "conditionType", cascade = CascadeType.ALL, orphanRemoval = true)

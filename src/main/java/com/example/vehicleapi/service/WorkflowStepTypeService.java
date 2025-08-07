@@ -23,7 +23,7 @@ public class WorkflowStepTypeService {
                 .collect(Collectors.toList());
     }
 
-    public WorkflowStepTypeDto findById(Long id) {
+    public WorkflowStepTypeDto findById(Integer id) {
         return repository.findById(id)
                 .map(mapper::toDto)
                 .orElseThrow(() -> new EntityNotFoundException("WorkflowStepType not found: " + id));
@@ -35,7 +35,7 @@ public class WorkflowStepTypeService {
         return mapper.toDto(saved);
     }
 
-    public WorkflowStepTypeDto update(Long id, WorkflowStepTypeDto dto) {
+    public WorkflowStepTypeDto update(Integer id, WorkflowStepTypeDto dto) {
         var existing = repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("WorkflowStepType not found: " + id));
         var entity = mapper.toEntity(dto);
@@ -44,7 +44,7 @@ public class WorkflowStepTypeService {
         return mapper.toDto(saved);
     }
 
-    public void delete(Long id) {
+    public void delete(Integer id) {
         repository.deleteById(id);
     }
 }

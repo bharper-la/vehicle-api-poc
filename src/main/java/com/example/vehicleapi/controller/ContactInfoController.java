@@ -26,7 +26,7 @@ public class ContactInfoController {
 
     @GetMapping("/<built-in function id>")
     @Operation(summary = "Get by ID")
-    public ContactInfoDto getById(@PathVariable Long id) {
+    public ContactInfoDto getById(@PathVariable Integer id) {
         return mapper.toDto(repository.findById(id).orElseThrow());
     }
 
@@ -39,7 +39,7 @@ public class ContactInfoController {
 
     @PutMapping("/<built-in function id>")
     @Operation(summary = "Update record")
-    public ContactInfoDto update(@PathVariable Long id, @RequestBody ContactInfoDto dto) {
+    public ContactInfoDto update(@PathVariable Integer id, @RequestBody ContactInfoDto dto) {
         ContactInfo entity = mapper.toEntity(dto);
         entity.setId(id);
         return mapper.toDto(repository.save(entity));
@@ -47,7 +47,7 @@ public class ContactInfoController {
 
     @DeleteMapping("/<built-in function id>")
     @Operation(summary = "Delete record")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Integer id) {
         repository.deleteById(id);
     }
 }

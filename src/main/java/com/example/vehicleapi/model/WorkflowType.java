@@ -14,7 +14,7 @@ import java.util.*;
 public class WorkflowType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String name;
     private String description;
     @OneToMany(mappedBy = "workflowType")

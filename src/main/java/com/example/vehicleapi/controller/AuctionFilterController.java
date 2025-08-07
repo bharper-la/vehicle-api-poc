@@ -26,7 +26,7 @@ public class AuctionFilterController {
 
     @GetMapping("/<built-in function id>")
     @Operation(summary = "Get by ID")
-    public AuctionFilterDto getById(@PathVariable Long id) {
+    public AuctionFilterDto getById(@PathVariable Integer id) {
         return mapper.toDto(repository.findById(id).orElseThrow());
     }
 
@@ -39,7 +39,7 @@ public class AuctionFilterController {
 
     @PutMapping("/<built-in function id>")
     @Operation(summary = "Update record")
-    public AuctionFilterDto update(@PathVariable Long id, @RequestBody AuctionFilterDto dto) {
+    public AuctionFilterDto update(@PathVariable Integer id, @RequestBody AuctionFilterDto dto) {
         AuctionFilter entity = mapper.toEntity(dto);
         entity.setId(id);
         return mapper.toDto(repository.save(entity));
@@ -47,7 +47,7 @@ public class AuctionFilterController {
 
     @DeleteMapping("/<built-in function id>")
     @Operation(summary = "Delete record")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Integer id) {
         repository.deleteById(id);
     }
 }

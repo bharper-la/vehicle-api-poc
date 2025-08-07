@@ -17,7 +17,7 @@ public class VehicleConditionTypeService {
         return repository.findAll().stream().map(mapper::toDto).toList();
     }
 
-    public VehicleConditionTypeDto getById(Long id) {
+    public VehicleConditionTypeDto getById(Integer id) {
         return mapper.toDto(repository.findById(id).orElseThrow());
     }
 
@@ -25,13 +25,13 @@ public class VehicleConditionTypeService {
         return mapper.toDto(repository.save(mapper.toEntity(dto)));
     }
 
-    public VehicleConditionTypeDto update(Long id, VehicleConditionTypeDto dto) {
+    public VehicleConditionTypeDto update(Integer id, VehicleConditionTypeDto dto) {
         var entity = mapper.toEntity(dto);
         entity.setId(id);
         return mapper.toDto(repository.save(entity));
     }
 
-    public void delete(Long id) {
+    public void delete(Integer id) {
         repository.deleteById(id);
     }
 }

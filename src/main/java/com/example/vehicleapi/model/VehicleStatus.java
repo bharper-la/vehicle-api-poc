@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class VehicleStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private LocalDate statusDate;
     private String notes;
     @ManyToOne
