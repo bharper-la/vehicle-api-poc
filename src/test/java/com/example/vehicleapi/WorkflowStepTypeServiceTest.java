@@ -31,7 +31,7 @@ public class WorkflowStepTypeServiceTest {
     @Test
     void testGetAll() {
         when(repository.findAll()).thenReturn(Collections.emptyList());
-        assertEquals(0, service.getAll().size());
+        assertEquals(0, service.findAll().size());
     }
 
     @Test
@@ -40,6 +40,6 @@ public class WorkflowStepTypeServiceTest {
         WorkflowStepTypeDto dto = new WorkflowStepTypeDto();
         when(repository.findById(1L)).thenReturn(Optional.of(entity));
         when(mapper.toDto(entity)).thenReturn(dto);
-        assertEquals(dto, service.getById(1L));
+        assertEquals(dto, service.findById(1L));
     }
 }

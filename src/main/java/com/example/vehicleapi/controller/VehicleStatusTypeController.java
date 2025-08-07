@@ -22,7 +22,7 @@ public class VehicleStatusTypeController {
     @Operation(summary = "Get all records")
     public List<VehicleStatusTypeDto> getAll() {
         return repository.findAll().stream().map(mapper::toDto).toList();
-        return repository.findAll();
+        
     }
 
     @GetMapping("/<built-in function id>")

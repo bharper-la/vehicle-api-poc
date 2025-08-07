@@ -22,7 +22,7 @@ public class LeadController {
     @Operation(summary = "Get all records")
     public List<LeadDto> getAll() {
         return repository.findAll().stream().map(mapper::toDto).toList();
-        return repository.findAll();
+        
     }
 
     @GetMapping("/<built-in function id>")

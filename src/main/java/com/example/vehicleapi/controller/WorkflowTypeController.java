@@ -22,7 +22,7 @@ public class WorkflowTypeController {
     @Operation(summary = "Get all records")
     public List<WorkflowTypeDto> getAll() {
         return repository.findAll().stream().map(mapper::toDto).toList();
-        return repository.findAll();
+        
     }
 
     @GetMapping("/<built-in function id>")

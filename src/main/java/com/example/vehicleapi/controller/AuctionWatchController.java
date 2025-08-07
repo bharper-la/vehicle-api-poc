@@ -22,7 +22,7 @@ public class AuctionWatchController {
     @Operation(summary = "Get all records")
     public List<AuctionWatchDto> getAll() {
         return repository.findAll().stream().map(mapper::toDto).toList();
-        return repository.findAll();
+
     }
 
     @GetMapping("/<built-in function id>")

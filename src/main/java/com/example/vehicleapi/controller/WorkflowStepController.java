@@ -22,7 +22,7 @@ public class WorkflowStepController {
     @Operation(summary = "Get all records")
     public List<WorkflowStepDto> getAll() {
         return repository.findAll().stream().map(mapper::toDto).toList();
-        return repository.findAll();
+        
     }
 
     @GetMapping("/<built-in function id>")
