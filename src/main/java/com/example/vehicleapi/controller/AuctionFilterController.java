@@ -11,7 +11,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/auction-filters")
+@RequestMapping("/auction-filter")
 @RequiredArgsConstructor
 @Tag(name = "AuctionFilter", description = "API for managing auction-filters")
 public class AuctionFilterController {

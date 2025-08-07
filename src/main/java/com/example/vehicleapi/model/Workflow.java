@@ -19,7 +19,7 @@ public class Workflow {
     private LocalDateTime createdAt;
     @ManyToOne
     @JoinColumn(name = "workflow_type_id")
-    private WorkflowType type;
+    private WorkflowType workflowType;
     @OneToMany(mappedBy = "workflow")
     private List<WorkflowStep> workflow_stepList;
     @OneToMany(mappedBy = "workflow")

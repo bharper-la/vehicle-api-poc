@@ -11,7 +11,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/workflow-logs")
+@RequestMapping("/workflow-log")
 @RequiredArgsConstructor
 @Tag(name = "WorkflowLog", description = "API for managing workflow-logs")
 public class WorkflowLogController {

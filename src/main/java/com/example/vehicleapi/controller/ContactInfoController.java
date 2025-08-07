@@ -11,7 +11,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/contact-infos")
+@RequestMapping("/contact-info")
 @RequiredArgsConstructor
 @Tag(name = "ContactInfo", description = "API for managing contact-infos")
 public class ContactInfoController {

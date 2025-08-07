@@ -8,6 +8,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.context.ActiveProfiles;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -24,14 +25,14 @@ public class WorkflowTypeControllerIntegrationTest {
 
     @Test
     void testGetAll() throws Exception {
-        mockMvc.perform(get("/workflow-types"))
+        mockMvc.perform(get("/workflow-type"))
                 .andExpect(status().isOk());
     }
 
     @Test
     void testCreate() throws Exception {
         WorkflowTypeDto dto = new WorkflowTypeDto();
-        mockMvc.perform(post("/workflow-types")
+        mockMvc.perform(post("/workflow-type")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(dto)))
                 .andExpect(status().isOk());

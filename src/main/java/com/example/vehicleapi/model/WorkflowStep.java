@@ -21,5 +21,5 @@ public class WorkflowStep {
     private Workflow workflow;
     @ManyToOne
     @JoinColumn(name = "workflow_step_type_id")
-    private WorkflowStepType stepType;
+    private WorkflowStepType workflowStepType;
 }

@@ -20,8 +20,8 @@ public class ContactInfo {
     private String phoneExchangeNumber;
     private String phoneUnitNumber;
     private String phoneExtension;
-    @OneToMany(mappedBy = "contact_info")
+    @OneToMany(mappedBy = "contactInfo", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<User> userList;
-    @OneToMany(mappedBy = "contact_info")
-    private List<Lead> leadList;
+    @OneToMany(mappedBy = "contactInfo", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Lead> leadList = new ArrayList<>();
 }

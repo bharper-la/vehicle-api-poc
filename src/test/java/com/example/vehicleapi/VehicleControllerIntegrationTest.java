@@ -25,14 +25,14 @@ public class VehicleControllerIntegrationTest {
 
     @Test
     void testGetAll() throws Exception {
-        mockMvc.perform(get("/vehicles"))
+        mockMvc.perform(get("/vehicle"))
                 .andExpect(status().isOk());
     }
 
     @Test
     void testCreate() throws Exception {
         VehicleDto dto = new VehicleDto();
-        mockMvc.perform(post("/vehicles")
+        mockMvc.perform(post("/vehicle")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(dto)))
                 .andExpect(status().isOk());

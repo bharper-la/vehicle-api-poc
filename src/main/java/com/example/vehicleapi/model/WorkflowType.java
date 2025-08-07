@@ -17,6 +17,7 @@ public class WorkflowType {
     private Long id;
     private String name;
     private String description;
-    @OneToMany(mappedBy = "workflow_type")
+    @OneToMany(mappedBy = "workflowType")
+    @Singular("workflow")
     private List<Workflow> workflowList;
 }

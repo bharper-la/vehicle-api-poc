@@ -5,7 +5,6 @@ import jakarta.validation.constraints.*;
 
 @Data
 public class WorkflowStepTypeDto {
-    @NotNull
     private Long id;
     @NotNull
     @Size(max = 100)

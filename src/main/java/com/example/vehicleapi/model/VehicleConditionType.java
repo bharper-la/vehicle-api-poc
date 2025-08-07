@@ -17,6 +17,6 @@ public class VehicleConditionType {
     private Long id;
     private String code;
     private String description;
-    @OneToMany(mappedBy = "vehicle_condition_type")
+    @OneToMany(mappedBy = "conditionType", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<VehicleCondition> vehicle_conditionList;
 }

@@ -18,13 +18,14 @@ public class Vehicle {
     private String vin;
     private String make;
     private String model;
+    @Column(name = "vehicle_year")
     private Integer year;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     @OneToMany(mappedBy = "vehicle")
     private List<VehicleCondition> vehicle_conditionList;
     @OneToMany(mappedBy = "vehicle")
-    private List<VehicleStatus> vehicle_statusList;
+    private List<VehicleStatus> vehicleStatuses;
     @OneToMany(mappedBy = "vehicle")
-    private List<VehicleMetadata> vehicle_metadataList;
+    private List<VehicleMetadata> vehicleMetadata;
 }

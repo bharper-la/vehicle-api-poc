@@ -13,6 +13,6 @@ echo "Creating schema from normalized_vehicle_schema.sql..."
 podman exec -i vehicle-mysql mysql -uroot -ppassword vehicles < src/main/resources/normalized_vehicle_schema.sql
 
 echo "Loading test data from data.sql..."
-podman exec -i vehicle-mysql mysql -uroot -ppassword vehicles < src/main/resources/data.sql
+podman exec -i vehicle-mysql mysql -uroot -ppassword vehicles < src/main/resources/V2__seed_data.sql
 
 echo "Schema and test data loaded."

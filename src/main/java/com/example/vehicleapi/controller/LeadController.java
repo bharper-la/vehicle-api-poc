@@ -11,7 +11,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/leads")
+@RequestMapping("/lead")
 @RequiredArgsConstructor
 @Tag(name = "Lead", description = "API for managing leads")
 public class LeadController {

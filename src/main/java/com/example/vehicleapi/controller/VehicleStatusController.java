@@ -11,7 +11,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/vehicle-statuss")
+@RequestMapping("/vehicle-status")
 @RequiredArgsConstructor
 @Tag(name = "VehicleStatus", description = "API for managing vehicle-statuss")
 public class VehicleStatusController {

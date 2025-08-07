@@ -21,5 +21,6 @@ public class Address {
     private String state;
     private String postalCode;
     @OneToMany(mappedBy = "address")
+    @Singular("user")
     private List<User> userList;
 }

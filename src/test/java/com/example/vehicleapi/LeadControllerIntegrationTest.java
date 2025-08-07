@@ -26,14 +26,14 @@ public class LeadControllerIntegrationTest {
 
     @Test
     void testGetAll() throws Exception {
-        mockMvc.perform(get("/leads"))
+        mockMvc.perform(get("/lead"))
                 .andExpect(status().isOk());
     }
 
     @Test
     void testCreate() throws Exception {
         LeadDto dto = new LeadDto();
-        mockMvc.perform(post("/leads")
+        mockMvc.perform(post("/lead")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(dto)))
                 .andExpect(status().isOk());

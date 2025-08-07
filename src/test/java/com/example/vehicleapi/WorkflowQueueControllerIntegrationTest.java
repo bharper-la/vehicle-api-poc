@@ -26,14 +26,14 @@ public class WorkflowQueueControllerIntegrationTest {
 
     @Test
     void testGetAll() throws Exception {
-        mockMvc.perform(get("/workflow-queues"))
+        mockMvc.perform(get("/workflow-queue"))
                 .andExpect(status().isOk());
     }
 
     @Test
     void testCreate() throws Exception {
         WorkflowQueueDto dto = new WorkflowQueueDto();
-        mockMvc.perform(post("/workflow-queues")
+        mockMvc.perform(post("/workflow-queue")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(dto)))
                 .andExpect(status().isOk());

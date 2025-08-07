@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/workflow-step-types")
+@RequestMapping("/workflow-step-type")
 @Validated
 @Tag(name = "WorkflowStepType APIs", description = "Operations related to workflow step types")
 public class WorkflowStepTypeController {

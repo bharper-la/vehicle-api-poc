@@ -87,15 +87,6 @@
             <scope>test</scope>
         </dependency>
 
-
-        <!-- Ensure WebMvcTest and other test auto-config annotations are on the classpath -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-test-autoconfigure</artifactId>
-            <version>${spring-boot.version}</version>
-            <scope>test</scope>
-        </dependency>
-
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>

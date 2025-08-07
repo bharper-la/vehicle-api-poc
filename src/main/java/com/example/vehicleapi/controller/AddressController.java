@@ -11,7 +11,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/addresss")
+@RequestMapping("/address")
 @RequiredArgsConstructor
 @Tag(name = "Address", description = "API for managing addresss")
 public class AddressController {

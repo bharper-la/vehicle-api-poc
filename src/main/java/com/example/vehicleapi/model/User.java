@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,7 +27,9 @@ public class User {
     @JoinColumn(name = "address_id")
     private Address address;
     @OneToMany(mappedBy = "user")
-    private List<AuctionFilter> auction_filterList;
+    @Singular("auctionFilter")
+    private List<AuctionFilter> auctionFilters;
     @OneToMany(mappedBy = "user")
-    private List<AuctionWatch> auction_watchList;
+    @Singular("auctionWatch")
+    private List<AuctionWatch> auctionWatches;
 }
