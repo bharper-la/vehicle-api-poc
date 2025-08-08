@@ -4,6 +4,8 @@ import com.example.vehicleapi.dto.WorkflowStepTypeDto;
 import com.example.vehicleapi.service.WorkflowStepTypeService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,28 +24,30 @@ public class WorkflowStepTypeController {
     }
 
     @GetMapping
-    public List<WorkflowStepTypeDto> findAll() {
-        return service.findAll();
+    public ResponseEntity<List<WorkflowStepTypeDto>> findAll() {
+        return ResponseEntity.ok(service.findAll());
     }
 
     @GetMapping("/{id}")
-    public WorkflowStepTypeDto findById(@PathVariable Integer id) {
-        return service.findById(id);
+    public ResponseEntity<WorkflowStepTypeDto> findById(@PathVariable Integer id) {
+        return ResponseEntity.ok(service.findById(id));
     }
 
     @PostMapping
-    public WorkflowStepTypeDto create(@Valid @RequestBody WorkflowStepTypeDto dto) {
-        return service.create(dto);
+    public ResponseEntity<WorkflowStepTypeDto> create(@Valid @RequestBody WorkflowStepTypeDto dto) {
+        WorkflowStepTypeDto created = service.create(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
     @PutMapping("/{id}")
-    public WorkflowStepTypeDto update(@PathVariable Integer id,
-                                      @Valid @RequestBody WorkflowStepTypeDto dto) {
-        return service.update(id, dto);
+    public ResponseEntity<WorkflowStepTypeDto> update(@PathVariable Integer id,
+                                                      @Valid @RequestBody WorkflowStepTypeDto dto) {
+        return ResponseEntity.ok(service.update(id, dto));
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id) {
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
         service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

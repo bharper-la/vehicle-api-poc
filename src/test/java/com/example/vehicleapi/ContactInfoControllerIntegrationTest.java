@@ -35,6 +35,6 @@ public class ContactInfoControllerIntegrationTest {
         mockMvc.perform(post("/contact-info")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(dto)))
-                .andExpect(status().isOk());
+                .andExpect(status().isCreated());
     }
 }

@@ -35,6 +35,6 @@ public class AddressControllerIntegrationTest {
         mockMvc.perform(post("/address")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(dto)))
-                .andExpect(status().isOk());
+                .andExpect(status().isCreated());
     }
 }

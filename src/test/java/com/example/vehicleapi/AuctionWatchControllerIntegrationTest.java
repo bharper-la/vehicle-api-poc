@@ -35,6 +35,6 @@ public class AuctionWatchControllerIntegrationTest {
         mockMvc.perform(post("/auction-watch")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(dto)))
-                .andExpect(status().isOk());
+                .andExpect(status().isCreated());
     }
 }

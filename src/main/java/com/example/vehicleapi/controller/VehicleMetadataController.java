@@ -1,54 +1,53 @@
 package com.example.vehicleapi.controller;
 
-import com.example.vehicleapi.mapper.VehicleMetadataMapper;
-import com.example.vehicleapi.repository.VehicleMetadataRepository;
 import com.example.vehicleapi.dto.VehicleMetadataDto;
-import com.example.vehicleapi.model.VehicleMetadata;
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
-import java.util.List;
+import com.example.vehicleapi.service.VehicleMetadataService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/vehicle-metadata")
 @RequiredArgsConstructor
 @Tag(name = "VehicleMetadata", description = "API for managing vehicle-metadatas")
 public class VehicleMetadataController {
-    private final VehicleMetadataRepository repository;
-    private final VehicleMetadataMapper mapper;
+
+    private final VehicleMetadataService service;
 
     @GetMapping
     @Operation(summary = "Get all records")
-    public List<VehicleMetadataDto> getAll() {
-        return repository.findAll().stream().map(mapper::toDto).toList();
-        
+    public ResponseEntity<List<VehicleMetadataDto>> getAll() {
+        return ResponseEntity.ok(service.getAll());
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Get by ID")
-    public VehicleMetadataDto getById(@PathVariable Integer id) {
-        return mapper.toDto(repository.findById(id).orElseThrow());
+    public ResponseEntity<VehicleMetadataDto> getById(@PathVariable Integer id) {
+        return ResponseEntity.ok(service.getById(id));
     }
 
     @PostMapping
     @Operation(summary = "Create new record")
-    public VehicleMetadataDto create(@RequestBody VehicleMetadataDto dto) {
-        VehicleMetadata entity = mapper.toEntity(dto);
-        return mapper.toDto(repository.save(entity));
+    public ResponseEntity<VehicleMetadataDto> create(@RequestBody VehicleMetadataDto dto) {
+        VehicleMetadataDto saved = service.create(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "Update record")
-    public VehicleMetadataDto update(@PathVariable Integer id, @RequestBody VehicleMetadataDto dto) {
-        VehicleMetadata entity = mapper.toEntity(dto);
-        entity.setId(id);
-        return mapper.toDto(repository.save(entity));
+    public ResponseEntity<VehicleMetadataDto> update(@PathVariable Integer id, @RequestBody VehicleMetadataDto dto) {
+        return ResponseEntity.ok(service.update(id, dto));
     }
 
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete record")
-    public void delete(@PathVariable Integer id) {
-        repository.deleteById(id);
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

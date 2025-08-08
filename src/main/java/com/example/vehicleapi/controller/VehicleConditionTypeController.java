@@ -1,54 +1,52 @@
 package com.example.vehicleapi.controller;
 
-import com.example.vehicleapi.model.VehicleConditionType;
 import com.example.vehicleapi.dto.VehicleConditionTypeDto;
-import com.example.vehicleapi.mapper.VehicleConditionTypeMapper;
-import com.example.vehicleapi.repository.VehicleConditionTypeRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
-import java.util.List;
+import com.example.vehicleapi.service.VehicleConditionTypeService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/vehicle-condition-type")
 @RequiredArgsConstructor
 @Tag(name = "VehicleConditionType", description = "API for managing vehicle-condition-types")
 public class VehicleConditionTypeController {
-    private final VehicleConditionTypeRepository repository;
-    private final VehicleConditionTypeMapper mapper;
+
+    private final VehicleConditionTypeService service;
 
     @GetMapping
     @Operation(summary = "Get all records")
-    public List<VehicleConditionTypeDto> getAll() {
-        return repository.findAll().stream().map(mapper::toDto).toList();
-        
+    public ResponseEntity<List<VehicleConditionTypeDto>> getAll() {
+        return ResponseEntity.ok(service.getAll());
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Get by ID")
-    public VehicleConditionTypeDto getById(@PathVariable Integer id) {
-        return mapper.toDto(repository.findById(id).orElseThrow());
+    public ResponseEntity<VehicleConditionTypeDto> getById(@PathVariable Integer id) {
+        return ResponseEntity.ok(service.getById(id));
     }
 
     @PostMapping
     @Operation(summary = "Create new record")
-    public VehicleConditionTypeDto create(@RequestBody VehicleConditionTypeDto dto) {
-        VehicleConditionType entity = mapper.toEntity(dto);
-        return mapper.toDto(repository.save(entity));
+    public ResponseEntity<VehicleConditionTypeDto> create(@RequestBody VehicleConditionTypeDto dto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.create(dto));
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "Update record")
-    public VehicleConditionTypeDto update(@PathVariable Integer id, @RequestBody VehicleConditionTypeDto dto) {
-        VehicleConditionType entity = mapper.toEntity(dto);
-        entity.setId(id);
-        return mapper.toDto(repository.save(entity));
+    public ResponseEntity<VehicleConditionTypeDto> update(@PathVariable Integer id, @RequestBody VehicleConditionTypeDto dto) {
+        return ResponseEntity.ok(service.update(id, dto));
     }
 
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete record")
-    public void delete(@PathVariable Integer id) {
-        repository.deleteById(id);
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

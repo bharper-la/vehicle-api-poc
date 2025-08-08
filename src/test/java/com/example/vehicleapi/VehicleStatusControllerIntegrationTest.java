@@ -35,6 +35,6 @@ public class VehicleStatusControllerIntegrationTest {
         mockMvc.perform(post("/vehicle-status")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(dto)))
-                .andExpect(status().isOk());
+                .andExpect(status().isCreated());
     }
 }

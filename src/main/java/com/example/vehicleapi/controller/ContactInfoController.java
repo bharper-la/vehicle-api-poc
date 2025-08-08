@@ -1,53 +1,52 @@
 package com.example.vehicleapi.controller;
 
-import com.example.vehicleapi.model.ContactInfo;
 import com.example.vehicleapi.dto.ContactInfoDto;
-import com.example.vehicleapi.mapper.ContactInfoMapper;
-import com.example.vehicleapi.repository.ContactInfoRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
-import java.util.List;
+import com.example.vehicleapi.service.ContactInfoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/contact-info")
 @RequiredArgsConstructor
 @Tag(name = "ContactInfo", description = "API for managing contact-infos")
 public class ContactInfoController {
-    private final ContactInfoRepository repository;
-    private final ContactInfoMapper mapper;
+
+    private final ContactInfoService service;
 
     @GetMapping
     @Operation(summary = "Get all records")
-    public List<ContactInfoDto> getAll() {
-        return repository.findAll().stream().map(mapper::toDto).toList();
+    public ResponseEntity<List<ContactInfoDto>> getAll() {
+        return ResponseEntity.ok(service.getAll());
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Get by ID")
-    public ContactInfoDto getById(@PathVariable Integer id) {
-        return mapper.toDto(repository.findById(id).orElseThrow());
+    public ResponseEntity<ContactInfoDto> getById(@PathVariable Integer id) {
+        return ResponseEntity.ok(service.getById(id));
     }
 
     @PostMapping
     @Operation(summary = "Create new record")
-    public ContactInfoDto create(@RequestBody ContactInfoDto dto) {
-        ContactInfo entity = mapper.toEntity(dto);
-        return mapper.toDto(repository.save(entity));
+    public ResponseEntity<ContactInfoDto> create(@RequestBody ContactInfoDto dto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.create(dto));
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "Update record")
-    public ContactInfoDto update(@PathVariable Integer id, @RequestBody ContactInfoDto dto) {
-        ContactInfo entity = mapper.toEntity(dto);
-        entity.setId(id);
-        return mapper.toDto(repository.save(entity));
+    public ResponseEntity<ContactInfoDto> update(@PathVariable Integer id, @RequestBody ContactInfoDto dto) {
+        return ResponseEntity.ok(service.update(id, dto));
     }
 
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete record")
-    public void delete(@PathVariable Integer id) {
-        repository.deleteById(id);
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

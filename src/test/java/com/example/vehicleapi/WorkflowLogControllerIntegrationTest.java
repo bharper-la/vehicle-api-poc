@@ -35,6 +35,6 @@ public class WorkflowLogControllerIntegrationTest {
         mockMvc.perform(post("/workflow-log")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(dto)))
-                .andExpect(status().isOk());
+                .andExpect(status().isCreated());
     }
 }

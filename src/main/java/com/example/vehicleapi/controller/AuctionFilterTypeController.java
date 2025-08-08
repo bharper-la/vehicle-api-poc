@@ -5,6 +5,8 @@ import com.example.vehicleapi.service.AuctionFilterTypeService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,19 +21,20 @@ public class AuctionFilterTypeController {
 
     @GetMapping
     @Operation(summary = "Get all auction filter types")
-    public List<AuctionFilterTypeDto> getAll() {
-        return service.findAll();
+    public ResponseEntity<List<AuctionFilterTypeDto>> getAll() {
+        return ResponseEntity.ok(service.findAll());
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Get auction filter type by ID")
-    public AuctionFilterTypeDto getById(@PathVariable Integer id) {
-        return service.findById(id);
+    public ResponseEntity<AuctionFilterTypeDto> getById(@PathVariable Integer id) {
+        return ResponseEntity.ok(service.findById(id));
     }
 
     @PostMapping
     @Operation(summary = "Create or update an auction filter type")
-    public AuctionFilterTypeDto save(@RequestBody AuctionFilterTypeDto dto) {
-        return service.save(dto);
+    public ResponseEntity<AuctionFilterTypeDto> save(@RequestBody AuctionFilterTypeDto dto) {
+        AuctionFilterTypeDto saved = service.save(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
 }

@@ -35,6 +35,6 @@ public class WorkflowTypeControllerIntegrationTest {
         mockMvc.perform(post("/workflow-type")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(dto)))
-                .andExpect(status().isOk());
+                .andExpect(status().isCreated());
     }
 }

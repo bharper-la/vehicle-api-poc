@@ -1,54 +1,53 @@
 package com.example.vehicleapi.controller;
 
-import com.example.vehicleapi.model.WorkflowStep;
 import com.example.vehicleapi.dto.WorkflowStepDto;
-import com.example.vehicleapi.mapper.WorkflowStepMapper;
-import com.example.vehicleapi.repository.WorkflowStepRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
-import java.util.List;
+import com.example.vehicleapi.service.WorkflowStepService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/workflow-step")
 @RequiredArgsConstructor
 @Tag(name = "WorkflowStep", description = "API for managing workflow-steps")
 public class WorkflowStepController {
-    private final WorkflowStepRepository repository;
-    private final WorkflowStepMapper mapper;
+
+    private final WorkflowStepService service;
 
     @GetMapping
     @Operation(summary = "Get all records")
-    public List<WorkflowStepDto> getAll() {
-        return repository.findAll().stream().map(mapper::toDto).toList();
-        
+    public ResponseEntity<List<WorkflowStepDto>> getAll() {
+        return ResponseEntity.ok(service.getAll());
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Get by ID")
-    public WorkflowStepDto getById(@PathVariable Integer id) {
-        return mapper.toDto(repository.findById(id).orElseThrow());
+    public ResponseEntity<WorkflowStepDto> getById(@PathVariable Integer id) {
+        return ResponseEntity.ok(service.getById(id));
     }
 
     @PostMapping
     @Operation(summary = "Create new record")
-    public WorkflowStepDto create(@RequestBody WorkflowStepDto dto) {
-        WorkflowStep entity = mapper.toEntity(dto);
-        return mapper.toDto(repository.save(entity));
+    public ResponseEntity<WorkflowStepDto> create(@RequestBody WorkflowStepDto dto) {
+        WorkflowStepDto created = service.create(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "Update record")
-    public WorkflowStepDto update(@PathVariable Integer id, @RequestBody WorkflowStepDto dto) {
-        WorkflowStep entity = mapper.toEntity(dto);
-        entity.setId(id);
-        return mapper.toDto(repository.save(entity));
+    public ResponseEntity<WorkflowStepDto> update(@PathVariable Integer id, @RequestBody WorkflowStepDto dto) {
+        return ResponseEntity.ok(service.update(id, dto));
     }
 
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete record")
-    public void delete(@PathVariable Integer id) {
-        repository.deleteById(id);
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
