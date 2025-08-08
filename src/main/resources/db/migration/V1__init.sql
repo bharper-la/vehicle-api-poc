@@ -52,8 +52,8 @@ CREATE TABLE address (
 );
 
 -- Users
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user` (
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
                         id INT AUTO_INCREMENT PRIMARY KEY,
                         login VARCHAR(100) NOT NULL,
                         password VARCHAR(100) NOT NULL,
@@ -92,7 +92,7 @@ CREATE TABLE vehicle (
                          vin VARCHAR(50) NOT NULL UNIQUE,
                          make VARCHAR(50),
                          model VARCHAR(50),
-                         year INT,
+                         vehicle_year INT,
                          created_at DATETIME,
                          updated_at DATETIME
 );
@@ -175,9 +175,18 @@ DROP TABLE IF EXISTS `auction_filter`;
 CREATE TABLE auction_filter (
                                 id INT AUTO_INCREMENT PRIMARY KEY,
                                 user_id INT,
+                                type_id INT,
                                 filter_data JSON,
                                 created_at DATETIME,
-                                FOREIGN KEY (user_id) REFERENCES `user`(id)
+                                FOREIGN KEY (user_id) REFERENCES `users`(id),
+                                FOREIGN KEY (type_id) REFERENCES `auction_filter_type`(id)
+);
+
+DROP TABLE IF EXISTS `auction_filter_type`;
+CREATE TABLE auction_filter_type (
+                                id INT AUTO_INCREMENT PRIMARY KEY,
+                                filter_type VARCHAR(100),
+                                created_at DATETIME
 );
 
 DROP TABLE IF EXISTS `auction_watch`;
@@ -186,5 +195,5 @@ CREATE TABLE auction_watch (
                                user_id INT,
                                watch_data JSON,
                                created_at DATETIME,
-                               FOREIGN KEY (user_id) REFERENCES `user`(id)
+                               FOREIGN KEY (user_id) REFERENCES `users`(id)
 );

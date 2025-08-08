@@ -24,7 +24,7 @@ public class Workflow {
     @Schema(description = "TODO", example = "sample")
     private LocalDateTime createdAt;
     @ManyToOne
-    @JoinColumn(name = "workflow_type_id")
+    @JoinColumn(name = "type_id")
     private WorkflowType workflowType;
     @OneToMany(mappedBy = "workflow")
     private List<WorkflowStep> workflow_stepList;

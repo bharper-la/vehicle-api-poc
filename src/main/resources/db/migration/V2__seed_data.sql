@@ -68,8 +68,12 @@ INSERT INTO `workflow_queue` (workflow_id, status, created_at) VALUES
 (1, 'Pending', NOW());
 
 -- Auction Filter
-INSERT INTO `auction_filter` (user_id, filter_data, created_at) VALUES
-(1, '{"make": "Honda"}', NOW());
+INSERT INTO `auction_filter` (user_id, type_id, filter_data, created_at) VALUES
+(1, 1,'2024', NOW());
+
+-- Auction Filter Type
+INSERT INTO `auction_filter_type` (type_id, filter_type, created_at) VALUES
+    (1, "year", NOW());
 
 -- Auction Watch
 INSERT INTO `auction_watch` (user_id, watch_data, created_at) VALUES

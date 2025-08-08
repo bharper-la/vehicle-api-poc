@@ -5,26 +5,17 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "auction_filter")
+@Table(name = "auction_filter_type")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class AuctionFilter {
+public class AuctionFilterType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @ManyToOne
-    @JoinColumn(name = "type_id")
-    private AuctionFilterType type;
-
-    @Column(columnDefinition = "json")
-    private String filterData;
+    private String filterType;
 
     private LocalDateTime createdAt;
 }

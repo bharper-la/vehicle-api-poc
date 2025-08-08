@@ -1,21 +1,17 @@
 package com.example.vehicleapi.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-@Schema(description = "VehicleConditionTypeDto model")
+@Schema(description = "Vehicle condition type DTO")
 public class VehicleConditionTypeDto {
-    @NotNull
-    @Schema(description = "id", example = "1")
-    private Long id;
-    @NotNull
-    @Size(max = 50)
-    @Schema(description = "code", example = "code_example")
+    @Schema(description = "ID", example = "1")
+    private Integer id;
+
+    @Schema(description = "Code", example = "EXCELLENT")
     private String code;
-    @Size(max = 255)
-    @Schema(description = "description", example = "description_example")
+
+    @Schema(description = "Description", example = "Excellent condition")
     private String description;
 }
