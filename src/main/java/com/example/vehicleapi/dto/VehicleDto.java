@@ -2,6 +2,7 @@ package com.example.vehicleapi.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
+import java.util.List;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -30,4 +31,12 @@ public class VehicleDto {
     private LocalDateTime createdAt;
     @Schema(description = "updatedAt", example = "2024-01-15")
     private LocalDateTime updatedAt;
+    @Schema(description = "List of vehicle conditions")
+    private List<VehicleConditionDto> vehicleConditionList;
+
+    @Schema(description = "List of vehicle statuses")
+    private List<VehicleStatusDto> vehicleStatuses;
+
+    @Schema(description = "List of vehicle metadata")
+    private List<VehicleMetadataDto> vehicleMetadata;
 }

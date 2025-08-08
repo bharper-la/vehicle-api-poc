@@ -1,0 +1,2262 @@
+openapi: 3.0.1
+info:
+  title: Vehicle API
+  description: API for Vehicle Management System
+  contact:
+    name: Brad Harper
+    url: https://www.laserappraiser.com
+    email: bradharper@laserappraiser.com
+  license:
+    name: Apache 2.0
+    url: http://springdoc.org
+  version: 1.0.0
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+tags:
+- name: AuctionFilter
+  description: API for managing auction-filters
+- name: VehicleStatus
+  description: API for managing vehicle-statuss
+- name: WorkflowType
+  description: API for managing workflow-types
+- name: VehicleStatusType
+  description: API for managing vehicle-status-types
+- name: WorkflowLog
+  description: API for managing workflow-logs
+- name: ContactInfo
+  description: API for managing contact-infos
+- name: VehicleConditionType
+  description: API for managing vehicle-condition-types
+- name: Lead
+  description: API for managing leads
+- name: Address
+  description: API for managing addresss
+- name: VehicleMetadata
+  description: API for managing vehicle-metadatas
+- name: WorkflowStepType APIs
+  description: Operations related to workflow step types
+- name: User
+  description: API for managing users
+- name: VehicleCondition
+  description: API for managing vehicle-conditions
+- name: Vehicle
+  description: API for managing vehicles
+- name: WorkflowStep
+  description: API for managing workflow-steps
+- name: AuctionWatch
+  description: API for managing auction-watchs
+- name: WorkflowQueue
+  description: API for managing workflow-queues
+- name: Workflow
+  description: API for managing workflows
+paths:
+  /workflow/{id}:
+    get:
+      tags:
+      - Workflow
+      summary: Get by ID
+      operationId: getById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WorkflowDto'
+    put:
+      tags:
+      - Workflow
+      summary: Update record
+      operationId: update
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WorkflowDto'
+    delete:
+      tags:
+      - Workflow
+      summary: Delete record
+      operationId: delete
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+  /workflow-type/{id}:
+    get:
+      tags:
+      - WorkflowType
+      summary: Get by ID
+      operationId: getById_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WorkflowTypeDto'
+    put:
+      tags:
+      - WorkflowType
+      summary: Update record
+      operationId: update_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowTypeDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WorkflowTypeDto'
+    delete:
+      tags:
+      - WorkflowType
+      summary: Delete record
+      operationId: delete_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+  /workflow-step/{id}:
+    get:
+      tags:
+      - WorkflowStep
+      summary: Get by ID
+      operationId: getById_2
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WorkflowStepDto'
+    put:
+      tags:
+      - WorkflowStep
+      summary: Update record
+      operationId: update_2
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowStepDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WorkflowStepDto'
+    delete:
+      tags:
+      - WorkflowStep
+      summary: Delete record
+      operationId: delete_2
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+  /workflow-step-type/{id}:
+    get:
+      tags:
+      - WorkflowStepType APIs
+      operationId: findById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WorkflowStepTypeDto'
+    put:
+      tags:
+      - WorkflowStepType APIs
+      operationId: update_3
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowStepTypeDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WorkflowStepTypeDto'
+    delete:
+      tags:
+      - WorkflowStepType APIs
+      operationId: delete_3
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+  /workflow-queue/{id}:
+    get:
+      tags:
+      - WorkflowQueue
+      summary: Get by ID
+      operationId: getById_3
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WorkflowQueueDto'
+    put:
+      tags:
+      - WorkflowQueue
+      summary: Update record
+      operationId: update_4
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowQueueDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WorkflowQueueDto'
+    delete:
+      tags:
+      - WorkflowQueue
+      summary: Delete record
+      operationId: delete_4
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+  /workflow-log/{id}:
+    get:
+      tags:
+      - WorkflowLog
+      summary: Get by ID
+      operationId: getById_4
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WorkflowLogDto'
+    put:
+      tags:
+      - WorkflowLog
+      summary: Update record
+      operationId: update_5
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowLogDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WorkflowLogDto'
+    delete:
+      tags:
+      - WorkflowLog
+      summary: Delete record
+      operationId: delete_5
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+  /vehicle/{id}:
+    get:
+      tags:
+      - Vehicle
+      summary: Get by ID
+      operationId: getById_5
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VehicleDto'
+    put:
+      tags:
+      - Vehicle
+      summary: Update record
+      operationId: update_6
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VehicleDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VehicleDto'
+    delete:
+      tags:
+      - Vehicle
+      summary: Delete record
+      operationId: delete_6
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+  /vehicle-status/{id}:
+    get:
+      tags:
+      - VehicleStatus
+      summary: Get by ID
+      operationId: getById_6
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VehicleStatusDto'
+    put:
+      tags:
+      - VehicleStatus
+      summary: Update record
+      operationId: update_7
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VehicleStatusDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VehicleStatusDto'
+    delete:
+      tags:
+      - VehicleStatus
+      summary: Delete record
+      operationId: delete_7
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+  /vehicle-status-type/{id}:
+    get:
+      tags:
+      - VehicleStatusType
+      summary: Get by ID
+      operationId: getById_7
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VehicleStatusTypeDto'
+    put:
+      tags:
+      - VehicleStatusType
+      summary: Update record
+      operationId: update_8
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VehicleStatusTypeDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VehicleStatusTypeDto'
+    delete:
+      tags:
+      - VehicleStatusType
+      summary: Delete record
+      operationId: delete_8
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+  /vehicle-metadata/{id}:
+    get:
+      tags:
+      - VehicleMetadata
+      summary: Get by ID
+      operationId: getById_8
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VehicleMetadataDto'
+    put:
+      tags:
+      - VehicleMetadata
+      summary: Update record
+      operationId: update_9
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VehicleMetadataDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VehicleMetadataDto'
+    delete:
+      tags:
+      - VehicleMetadata
+      summary: Delete record
+      operationId: delete_9
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+  /vehicle-condition/{id}:
+    get:
+      tags:
+      - VehicleCondition
+      summary: Get by ID
+      operationId: getById_9
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VehicleConditionDto'
+    put:
+      tags:
+      - VehicleCondition
+      summary: Update record
+      operationId: update_10
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VehicleConditionDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VehicleConditionDto'
+    delete:
+      tags:
+      - VehicleCondition
+      summary: Delete record
+      operationId: delete_10
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+  /vehicle-condition-type/{id}:
+    get:
+      tags:
+      - VehicleConditionType
+      summary: Get by ID
+      operationId: getById_10
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VehicleConditionTypeDto'
+    put:
+      tags:
+      - VehicleConditionType
+      summary: Update record
+      operationId: update_11
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VehicleConditionTypeDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VehicleConditionTypeDto'
+    delete:
+      tags:
+      - VehicleConditionType
+      summary: Delete record
+      operationId: delete_11
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+  /user/{id}:
+    get:
+      tags:
+      - User
+      summary: Get by ID
+      operationId: getById_11
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserDto'
+    put:
+      tags:
+      - User
+      summary: Update record
+      operationId: update_12
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserDto'
+    delete:
+      tags:
+      - User
+      summary: Delete record
+      operationId: delete_12
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+  /lead/{id}:
+    get:
+      tags:
+      - Lead
+      summary: Get by ID
+      operationId: getById_12
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/LeadDto'
+    put:
+      tags:
+      - Lead
+      summary: Update record
+      operationId: update_13
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LeadDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/LeadDto'
+    delete:
+      tags:
+      - Lead
+      summary: Delete record
+      operationId: delete_13
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+  /contact-info/{id}:
+    get:
+      tags:
+      - ContactInfo
+      summary: Get by ID
+      operationId: getById_13
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ContactInfoDto'
+    put:
+      tags:
+      - ContactInfo
+      summary: Update record
+      operationId: update_14
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactInfoDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ContactInfoDto'
+    delete:
+      tags:
+      - ContactInfo
+      summary: Delete record
+      operationId: delete_14
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+  /auction-watch/{id}:
+    get:
+      tags:
+      - AuctionWatch
+      summary: Get by ID
+      operationId: getById_14
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AuctionWatchDto'
+    put:
+      tags:
+      - AuctionWatch
+      summary: Update record
+      operationId: update_15
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuctionWatchDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AuctionWatchDto'
+    delete:
+      tags:
+      - AuctionWatch
+      summary: Delete record
+      operationId: delete_15
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+  /auction-filter/{id}:
+    get:
+      tags:
+      - AuctionFilter
+      summary: Get by ID
+      operationId: getById_15
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AuctionFilterDto'
+    put:
+      tags:
+      - AuctionFilter
+      summary: Update record
+      operationId: update_16
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuctionFilterDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AuctionFilterDto'
+    delete:
+      tags:
+      - AuctionFilter
+      summary: Delete record
+      operationId: delete_16
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+  /address/{id}:
+    get:
+      tags:
+      - Address
+      summary: Get by ID
+      operationId: getById_16
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AddressDto'
+    put:
+      tags:
+      - Address
+      summary: Update record
+      operationId: update_17
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddressDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AddressDto'
+    delete:
+      tags:
+      - Address
+      summary: Delete record
+      operationId: delete_17
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+  /workflow:
+    get:
+      tags:
+      - Workflow
+      summary: Get all records
+      operationId: getAll
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WorkflowDto'
+    post:
+      tags:
+      - Workflow
+      summary: Create new record
+      operationId: create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WorkflowDto'
+  /workflow-type:
+    get:
+      tags:
+      - WorkflowType
+      summary: Get all records
+      operationId: getAll_1
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WorkflowTypeDto'
+    post:
+      tags:
+      - WorkflowType
+      summary: Create new record
+      operationId: create_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowTypeDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WorkflowTypeDto'
+  /workflow-step:
+    get:
+      tags:
+      - WorkflowStep
+      summary: Get all records
+      operationId: getAll_2
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WorkflowStepDto'
+    post:
+      tags:
+      - WorkflowStep
+      summary: Create new record
+      operationId: create_2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowStepDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WorkflowStepDto'
+  /workflow-step-type:
+    get:
+      tags:
+      - WorkflowStepType APIs
+      operationId: findAll
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WorkflowStepTypeDto'
+    post:
+      tags:
+      - WorkflowStepType APIs
+      operationId: create_3
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowStepTypeDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WorkflowStepTypeDto'
+  /workflow-queue:
+    get:
+      tags:
+      - WorkflowQueue
+      summary: Get all records
+      operationId: getAll_3
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WorkflowQueueDto'
+    post:
+      tags:
+      - WorkflowQueue
+      summary: Create new record
+      operationId: create_4
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowQueueDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WorkflowQueueDto'
+  /workflow-log:
+    get:
+      tags:
+      - WorkflowLog
+      summary: Get all records
+      operationId: getAll_4
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WorkflowLogDto'
+    post:
+      tags:
+      - WorkflowLog
+      summary: Create new record
+      operationId: create_5
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowLogDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WorkflowLogDto'
+  /vehicle:
+    get:
+      tags:
+      - Vehicle
+      summary: Get all records
+      operationId: getAll_5
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VehicleDto'
+    post:
+      tags:
+      - Vehicle
+      summary: Create new record
+      operationId: create_6
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VehicleDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VehicleDto'
+  /vehicle-status:
+    get:
+      tags:
+      - VehicleStatus
+      summary: Get all records
+      operationId: getAll_6
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VehicleStatusDto'
+    post:
+      tags:
+      - VehicleStatus
+      summary: Create new record
+      operationId: create_7
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VehicleStatusDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VehicleStatusDto'
+  /vehicle-status-type:
+    get:
+      tags:
+      - VehicleStatusType
+      summary: Get all records
+      operationId: getAll_7
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VehicleStatusTypeDto'
+    post:
+      tags:
+      - VehicleStatusType
+      summary: Create new record
+      operationId: create_8
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VehicleStatusTypeDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VehicleStatusTypeDto'
+  /vehicle-metadata:
+    get:
+      tags:
+      - VehicleMetadata
+      summary: Get all records
+      operationId: getAll_8
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VehicleMetadataDto'
+    post:
+      tags:
+      - VehicleMetadata
+      summary: Create new record
+      operationId: create_9
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VehicleMetadataDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VehicleMetadataDto'
+  /vehicle-condition:
+    get:
+      tags:
+      - VehicleCondition
+      summary: Get all records
+      operationId: getAll_9
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VehicleConditionDto'
+    post:
+      tags:
+      - VehicleCondition
+      summary: Create new record
+      operationId: create_10
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VehicleConditionDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VehicleConditionDto'
+  /vehicle-condition-type:
+    get:
+      tags:
+      - VehicleConditionType
+      summary: Get all records
+      operationId: getAll_10
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VehicleConditionTypeDto'
+    post:
+      tags:
+      - VehicleConditionType
+      summary: Create new record
+      operationId: create_11
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VehicleConditionTypeDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VehicleConditionTypeDto'
+  /user:
+    get:
+      tags:
+      - User
+      summary: Get all records
+      operationId: getAll_11
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserDto'
+    post:
+      tags:
+      - User
+      summary: Create new record
+      operationId: create_12
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserDto'
+  /lead:
+    get:
+      tags:
+      - Lead
+      summary: Get all records
+      operationId: getAll_12
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LeadDto'
+    post:
+      tags:
+      - Lead
+      summary: Create new record
+      operationId: create_13
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LeadDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/LeadDto'
+  /contact-info:
+    get:
+      tags:
+      - ContactInfo
+      summary: Get all records
+      operationId: getAll_13
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContactInfoDto'
+    post:
+      tags:
+      - ContactInfo
+      summary: Create new record
+      operationId: create_14
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactInfoDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ContactInfoDto'
+  /auction-watch:
+    get:
+      tags:
+      - AuctionWatch
+      summary: Get all records
+      operationId: getAll_14
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AuctionWatchDto'
+    post:
+      tags:
+      - AuctionWatch
+      summary: Create new record
+      operationId: create_15
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuctionWatchDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AuctionWatchDto'
+  /auction-filter:
+    get:
+      tags:
+      - AuctionFilter
+      summary: Get all records
+      operationId: getAll_15
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AuctionFilterDto'
+    post:
+      tags:
+      - AuctionFilter
+      summary: Create new record
+      operationId: create_16
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuctionFilterDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AuctionFilterDto'
+  /address:
+    get:
+      tags:
+      - Address
+      summary: Get all records
+      operationId: getAll_16
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AddressDto'
+    post:
+      tags:
+      - Address
+      summary: Create new record
+      operationId: create_17
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddressDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AddressDto'
+components:
+  schemas:
+    WorkflowDto:
+      required:
+      - id
+      - name
+      type: object
+      properties:
+        id:
+          type: integer
+          description: id
+          format: int64
+          example: 1
+        name:
+          maxLength: 100
+          minLength: 0
+          type: string
+          description: name
+          example: John Doe
+        createdAt:
+          type: string
+          description: createdAt
+          format: date-time
+      description: WorkflowDto model
+    WorkflowTypeDto:
+      required:
+      - id
+      - name
+      type: object
+      properties:
+        id:
+          type: integer
+          description: id
+          format: int64
+          example: 1
+        name:
+          maxLength: 100
+          minLength: 0
+          type: string
+          description: name
+          example: John Doe
+        description:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: description
+          example: description_example
+      description: WorkflowTypeDto model
+    WorkflowStepDto:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          type: integer
+          description: id
+          format: int64
+          example: 1
+        description:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: description
+          example: description_example
+        createdAt:
+          type: string
+          description: createdAt
+          format: date-time
+      description: WorkflowStepDto model
+    WorkflowStepTypeDto:
+      required:
+      - name
+      type: object
+      properties:
+        id:
+          type: integer
+          description: id
+          format: int64
+          example: 1
+        name:
+          maxLength: 100
+          minLength: 0
+          type: string
+          description: name
+          example: John Doe
+        description:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: description
+          example: description_example
+      description: WorkflowStepTypeDto model
+    WorkflowQueueDto:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          type: integer
+          description: id
+          format: int64
+          example: 1
+        status:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: status
+          example: status_example
+        createdAt:
+          type: string
+          description: createdAt
+          format: date-time
+      description: WorkflowQueueDto model
+    WorkflowLogDto:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          type: integer
+          description: id
+          format: int64
+          example: 1
+        message:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: message
+          example: message_example
+        createdAt:
+          type: string
+          description: createdAt
+          format: date-time
+      description: WorkflowLogDto model
+    VehicleConditionDto:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          type: integer
+          description: id
+          format: int64
+          example: 1
+        conditionDate:
+          type: string
+          description: conditionDate
+          format: date
+          example: 2024-01-15
+        comments:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: comments
+          example: comments_example
+      description: VehicleConditionDto model
+    VehicleDto:
+      required:
+      - id
+      - vin
+      - year
+      type: object
+      properties:
+        id:
+          type: integer
+          description: id
+          format: int64
+          example: 1
+        vin:
+          maxLength: 50
+          minLength: 0
+          type: string
+          description: vin
+          example: 1FTFW3L80RKD57160
+        make:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: make
+          example: Ford
+        model:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: model
+          example: F-150
+        year:
+          type: integer
+          description: year
+          format: int32
+          example: 2024
+        createdAt:
+          type: string
+          description: createdAt
+          format: date-time
+        updatedAt:
+          type: string
+          description: updatedAt
+          format: date-time
+        vehicleConditionList:
+          type: array
+          description: List of vehicle conditions
+          items:
+            $ref: '#/components/schemas/VehicleConditionDto'
+        vehicleStatuses:
+          type: array
+          description: List of vehicle statuses
+          items:
+            $ref: '#/components/schemas/VehicleStatusDto'
+        vehicleMetadata:
+          type: array
+          description: List of vehicle metadata
+          items:
+            $ref: '#/components/schemas/VehicleMetadataDto'
+      description: VehicleDto model
+    VehicleMetadataDto:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          type: integer
+          description: id
+          format: int64
+          example: 1
+        type:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: type
+          example: type_example
+        data:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: data
+          example: data_example
+        createdAt:
+          type: string
+          description: createdAt
+          format: date-time
+      description: VehicleMetadataDto model
+    VehicleStatusDto:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          type: integer
+          description: id
+          format: int64
+          example: 1
+        statusDate:
+          type: string
+          description: statusDate
+          format: date
+          example: 2024-01-15
+        notes:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: notes
+          example: notes_example
+      description: VehicleStatusDto model
+    VehicleStatusTypeDto:
+      required:
+      - code
+      - id
+      type: object
+      properties:
+        id:
+          type: integer
+          description: id
+          format: int64
+          example: 1
+        code:
+          maxLength: 50
+          minLength: 0
+          type: string
+          description: code
+          example: code_example
+        description:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: description
+          example: description_example
+      description: VehicleStatusTypeDto model
+    VehicleConditionTypeDto:
+      required:
+      - code
+      - id
+      type: object
+      properties:
+        id:
+          type: integer
+          description: id
+          format: int64
+          example: 1
+        code:
+          maxLength: 50
+          minLength: 0
+          type: string
+          description: code
+          example: code_example
+        description:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: description
+          example: description_example
+      description: VehicleConditionTypeDto model
+    UserDto:
+      required:
+      - id
+      - login
+      - password
+      type: object
+      properties:
+        id:
+          type: integer
+          description: id
+          format: int64
+          example: 1
+        login:
+          maxLength: 100
+          minLength: 0
+          type: string
+          description: login
+          example: login_example
+        password:
+          maxLength: 100
+          minLength: 0
+          type: string
+          description: password
+          example: password_example
+        enabled:
+          type: boolean
+          description: enabled
+          example: false
+        createdAt:
+          type: string
+          description: createdAt
+          format: date-time
+        updatedAt:
+          type: string
+          description: updatedAt
+          format: date-time
+      description: UserDto model
+    LeadDto:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          type: integer
+          description: id
+          format: int64
+          example: 1
+        dealership:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: dealership
+          example: dealership_example
+        firstName:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: firstName
+          example: John Doe
+        lastName:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: lastName
+          example: John Doe
+        email:
+          type: string
+          description: email
+          example: user@example.com
+        promoCode:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: promoCode
+          example: promoCode_example
+        referrer:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: referrer
+          example: referrer_example
+        status:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: status
+          example: status_example
+        statusDate:
+          type: string
+          description: statusDate
+          format: date
+          example: 2024-01-15
+        expirationDate:
+          type: string
+          description: expirationDate
+          format: date
+          example: 2024-01-15
+        createdAt:
+          type: string
+          description: createdAt
+          format: date-time
+        updatedAt:
+          type: string
+          description: updatedAt
+          format: date-time
+      description: LeadDto model
+    ContactInfoDto:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          type: integer
+          description: id
+          format: int64
+          example: 1
+        email:
+          type: string
+          description: email
+          example: user@example.com
+        phoneAreaCode:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: phoneAreaCode
+          example: 555-123-4567
+        phoneExchangeNumber:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: phoneExchangeNumber
+          example: 555-123-4567
+        phoneUnitNumber:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: phoneUnitNumber
+          example: 555-123-4567
+        phoneExtension:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: phoneExtension
+          example: 555-123-4567
+      description: ContactInfoDto model
+    AuctionWatchDto:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          type: integer
+          description: id
+          format: int64
+          example: 1
+        watchData:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: watchData
+          example: watchData_example
+        createdAt:
+          type: string
+          description: createdAt
+          format: date-time
+      description: AuctionWatchDto model
+    AuctionFilterDto:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          type: integer
+          description: id
+          format: int64
+          example: 1
+        filterData:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: filterData
+          example: filterData_example
+        createdAt:
+          type: string
+          description: createdAt
+          format: date-time
+      description: AuctionFilterDto model
+    AddressDto:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          type: integer
+          description: id
+          format: int64
+          example: 1
+        line1:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: line1
+          example: line1_example
+        line2:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: line2
+          example: line2_example
+        city:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: city
+          example: Springfield
+        state:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: state
+          example: CA
+        postalCode:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: postalCode
+          example: postalCode_example
+      description: AddressDto model
